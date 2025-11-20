@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../viewmodels/splash_viewmodel.dart';
 
 class SplashPage extends StatefulWidget {
+  // ignore: use_super_parameters
   const SplashPage({Key? key}) : super(key: key);
 
   @override
@@ -24,55 +25,16 @@ class _SplashPageState extends State<SplashPage> {
       body: Consumer<SplashViewModel>(
         builder: (context, viewModel, child) {
           return Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xFFFF6B9D),
-                  Color(0xFFC44569),
-                ],
-              ),
-            ),
+            decoration: BoxDecoration(color: Color(0xFFB80F0A)),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // App Logo
-                  Container(
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white.withOpacity(0.2),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '💕',
-                        style: TextStyle(fontSize: 60),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 30),
-                  // App Name
-                  Text(
-                    'Zingle',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  // Tagline
-                  Text(
-                    'Find Your Connection',
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.8),
-                      fontSize: 16,
-                      letterSpacing: 1,
-                    ),
+                  Image.asset(
+                    'assets/Zingle_logo.png',
+                    width: 420,
+                    height: 420,
                   ),
                   SizedBox(height: 60),
                   // Loading Indicator
@@ -94,10 +56,7 @@ class _SplashPageState extends State<SplashPage> {
                           Text(
                             viewModel.errorMessage!,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
+                            style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                           SizedBox(height: 20),
                           ElevatedButton(

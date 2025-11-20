@@ -17,6 +17,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final SharedPreferences sharedPreferences;
 
+  // ignore: use_super_parameters
   const MyApp({Key? key, required this.sharedPreferences}) : super(key: key);
 
   @override
@@ -29,29 +30,22 @@ class MyApp extends StatelessWidget {
         ),
         // Repositories
         Provider<AuthRepository>(
-          create: (context) => AuthRepositoryImpl(
-            context.read<AuthLocalDatasource>(),
-          ),
+          create: (context) =>
+              AuthRepositoryImpl(context.read<AuthLocalDatasource>()),
         ),
         // Use Cases
         Provider<CheckAuthUsecase>(
-          create: (context) => CheckAuthUsecase(
-            context.read<AuthRepository>(),
-          ),
+          create: (context) => CheckAuthUsecase(context.read<AuthRepository>()),
         ),
         // ViewModels
         ChangeNotifierProvider<SplashViewModel>(
-          create: (context) => SplashViewModel(
-            context.read<CheckAuthUsecase>(),
-          ),
+          create: (context) =>
+              SplashViewModel(context.read<CheckAuthUsecase>()),
         ),
       ],
       child: MaterialApp(
         title: 'Zingle',
-        theme: ThemeData(
-          primarySwatch: Colors.pink,
-          useMaterial3: true,
-        ),
+        theme: ThemeData(primarySwatch: Colors.pink, useMaterial3: true),
         home: SplashPage(),
       ),
     );
