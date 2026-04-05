@@ -7,6 +7,8 @@ import 'domain/usecases/check_auth_usecase.dart';
 import 'domain/repositories/auth_repository.dart';
 import 'data/repositories/auth_repository_impl.dart';
 import 'data/datasources/local/auth_local_datasource.dart';
+import 'screens/onboarding_screen.dart';
+import 'screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,6 +49,11 @@ class MyApp extends StatelessWidget {
         title: 'Zingle',
         theme: ThemeData(primarySwatch: Colors.pink, useMaterial3: true),
         home: SplashPage(),
+        routes: {
+          'onboarding': (context) => OnboardingScreen(),
+          'login': (context) => LoginScreen(),
+          'signup': (context) => LoginScreen(),
+        },
       ),
     );
   }

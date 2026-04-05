@@ -6,15 +6,18 @@ class SplashViewModel extends ChangeNotifier {
 
   bool _isLoading = true;
   String? _errorMessage;
+  String? _navigationRoute;
 
   SplashViewModel(this._checkAuthUsecase);
 
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
+  String? get navigationRoute => _navigationRoute;
 
   Future<void> checkAuthStatus() async {
     _isLoading = true;
     _errorMessage = null;
+    _navigationRoute = null;
     notifyListeners();
 
     try {
@@ -24,21 +27,15 @@ class SplashViewModel extends ChangeNotifier {
       _isLoading = false;
 
       if (isAuthenticated) {
-        // Navigate to Home
-        _navigateTo('home');
+        _navigationRoute = 'home';
       } else {
-        // Navigate to Login
-        _navigateTo('login');
+        _navigationRoute = 'onboarding';
       }
+      notifyListeners();
     } catch (e) {
       _isLoading = false;
       _errorMessage = 'Failed to load. Please try again.';
       notifyListeners();
     }
-  }
-
-  void _navigateTo(String route) {
-    // Navigation will be handled by the page itself
-    notifyListeners();
   }
 }

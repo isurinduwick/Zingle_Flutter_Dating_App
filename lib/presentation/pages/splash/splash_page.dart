@@ -15,7 +15,17 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<SplashViewModel>().checkAuthStatus();
+      final viewModel = context.read<SplashViewModel>();
+      viewModel.checkAuthStatus();
+
+      // Listen for navigation
+      viewModel.addListener(() {
+        if (viewModel.navigationRoute != null) {
+          Navigator.of(
+            context,
+          ).pushReplacementNamed(viewModel.navigationRoute!);
+        }
+      });
     });
   }
 
