@@ -15,79 +15,18 @@ class LoginScreen extends StatelessWidget {
             children: [
               const Spacer(),
               
-              // Logo with gradient
+              // Logo with red circle background
               Container(
-                width: 100,
-                height: 100,
+                width: 120,
+                height: 120,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Color(0xFFFF6B9D),
-                      Color(0xFFE91E63),
-                      Color(0xFFC2185B),
-                      Color(0xFF8E24AA),
-                    ],
-                  ),
+                  color: Color(0xFFE91E63), // Red/Pink color
                 ),
-                child: Center(
-                  child: Container(
-                    width: 90,
-                    height: 90,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: Center(
-                      child: Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              Color(0xFFFF6B9D),
-                              Color(0xFFE91E63),
-                              Color(0xFFC2185B),
-                              Color(0xFF8E24AA),
-                            ],
-                          ),
-                        ),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              left: 8,
-                              top: 15,
-                              child: Container(
-                                width: 20,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              right: 8,
-                              top: 15,
-                              child: Container(
-                                width: 20,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                padding: EdgeInsets.all(5),
+                child: Image.asset(
+                  'assets/Zingle_logo.png',
+                  fit: BoxFit.contain,
                 ),
               ),
               
@@ -133,17 +72,30 @@ class LoginScreen extends StatelessWidget {
               
               const SizedBox(height: 16),
               
-              // Use phone number link
-              GestureDetector(
-                onTap: () {
-                  // Navigate to phone signup
-                },
-                child: Text(
-                  'Use phone number',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black87,
-                    decoration: TextDecoration.underline,
+              // Use phone number button
+              SizedBox(
+                width: double.infinity,
+                height: 52,
+                child: OutlinedButton(
+                  onPressed: () {
+                    // Navigate to phone signup
+                  },
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(
+                      color: Color(0xFFE91E63),
+                      width: 2,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(26),
+                    ),
+                  ),
+                  child: Text(
+                    'Use phone number',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFFE91E63),
+                    ),
                   ),
                 ),
               ),
